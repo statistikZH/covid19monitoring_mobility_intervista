@@ -1,0 +1,173 @@
+---
+title: "IntervistaToCorrectDataStructure.Rmd"
+---
+
+# R setup 
+
+```{r setup}
+
+# clear R memory
+# rm(list = ls())
+
+# import libraries
+library(tidyverse)
+
+options(scipen = 1000000)
+options(digits = 6)
+
+```
+
+# import data
+
+```{r}
+
+dat <-  read.csv("C:/gitrepos/Intervista_MobilitaetTrackingCorona/Distanzen.csv", header=T, sep=";", stringsAsFactors=FALSE, encoding="ANSI_X3.4-1986") 
+
+
+```
+
+# restruscture data
+
+```{r}
+
+#dat_CH
+dat_CH <- dat %>%
+  select(-"Zürich_Ja", -"Zürich_Nein", -"Ticino_Ja", -"Ticino_Nein",-"Französische_Schweiz", -"Alpen_und_Voralpen", -"Westmittelland" ,-"Ostmittelland", -"Italienische_Schweiz", -"D.CH", -"W.CH", -"I.CH") %>%
+  pivot_longer(
+    cols =  c("Total", "Alter_15.29", "Alter_30.59", "Alter_60..", "Alter_65..","Alter_15.64" , "Männlich", "Weiblich", "Städtisch" ,"Ländlich"),
+    names_to = "variable_short",
+    values_to = "value"
+    ) %>%
+  mutate(location = "CH")
+
+#dat_rest
+dat_rest <- dat %>%
+  select(-"Total", -"Alter_15.29", -"Alter_30.59", -"Alter_60..", -"Alter_65..",-"Alter_15.64" , -"Männlich", -"Weiblich", -"Städtisch" ,-"Ländlich") %>%
+  pivot_longer(
+    cols =  c("Zürich_Ja", "Zürich_Nein", "Ticino_Ja", "Ticino_Nein","Französische_Schweiz", "Alpen_und_Voralpen", "Westmittelland" ,"Ostmittelland", "Italienische_Schweiz", "D.CH", "W.CH", "I.CH"),
+    names_to = "location",
+    values_to = "value"
+    ) %>%
+  mutate(variable_short = "Total")
+
+# check: should be TRUE  
+if(TRUE != all(sort(names(dat_CH)) == sort(names(dat_rest)))) stop('nrow sort(names(dat_CH)) == sort(names(dat_rest)) not correct')
+
+
+#dat_restr
+dat_restr <- dat_CH %>%
+  bind_rows(dat_rest) %>%
+  mutate(variable_short = recode_factor(variable_short, 
+                                     "Alter_15.29" = "age_15_29", 
+                                     "Alter_30.59" = "age_30_59", 
+                                     "Alter_60.." = "age_60plus",
+                                     "Alter_65.." = "age_65plus", 
+                                     "Alter_15.64" = "age_15_64",
+                                     "Männlich" = "male",
+                                     "Weiblich" = "female",
+                                     "Städtisch" = "urban",
+                                     "Ländlich" = "rural",
+                                     "Total" = "total"
+                                     ),
+         location = recode_factor(location, 
+                                     "Zürich_Ja" = "Zürich", 
+                                     "Zürich_Nein" = "Schweiz ohne Zürich", 
+                                     "Ticino_Ja" = "Tessin", 
+                                     "Ticino_Nein" = "Schweiz ohne Tessin",
+                                     "Französische_Schweiz" = "Französische Schweiz", 
+                                     "Alpen_und_Voralpen" = "Alpen und Voralpen",
+                                     "Ostmittelland" = "Ostmittelland",
+                                     "Italienische_Schweiz" = "Italienische Schweiz",
+                                     "D.CH" = "Deutschschweiz",
+                                     "W.CH" = "Westschweiz",
+                                     "I.CH" = "Italienische Schweiz"
+                                     ),
+          Beschreibung = recode_factor(Beschreibung, 
+                                     "Distanz" = "distance", 
+                                     "Radius" = "radius",
+                                     "Distanz in m " = "distance", 
+                                     "Radius in m" = "radius"
+                                     ),
+          Typ = recode_factor(Typ, 
+                                     "Mean" = "mean", 
+                                     "Median" = "median"
+                                     ),
+         variable_short = paste0("daily_", Beschreibung, "_", Typ, "_", variable_short),
+         variable_long = recode_factor(variable_short, 
+                                     "daily_distance_mean_total" = "durchschnittliche Tagesdistanz", 
+                                     "daily_distance_mean_age_15_29" = "durchschnittliche Tagesdistanz der 15-29-Jährigen",
+                                     "daily_distance_mean_age_30_59" = "durchschnittliche Tagesdistanz der 30-59-Jährigen", 
+                                     "daily_distance_mean_age_60plus" = "durchschnittliche Tagesdistanz der über 60-Järigen", 
+                                     "daily_distance_mean_age_65plus" = "durchschnittliche Tagesdistanz der über 65-Jähriegen",
+                                     "daily_distance_mean_age_15_64" = "durchschnittliche Tagesdistanz der 15-64-Jährigen", 
+                                     "daily_distance_mean_male" = "durchschnittliche Tagesdistanz der Männer", 
+                                     "daily_distance_mean_female" = "durchschnittliche Tagesdistanz der Frauen",
+                                     "daily_distance_mean_urban" = "durchschnittliche Tagesdistanz im urbanen Raum", 
+                                     "daily_distance_mean_rural" = "durchschnittliche Tagesdistanz im ruralen Raum", 
+                              
+                                     "daily_radius_mean_total" = "durchschnittlicher täglicher Bewegungsradius",
+                                     "daily_radius_mean_age_15_29" = "durchschnittlicher täglicher Bewegungsradius der 15-29-Jährigen", 
+                                     "daily_radius_mean_age_30_59" = "durchschnittlicher täglicher Bewegungsradius der 30-59-Jährigen", 
+                                     "daily_radius_mean_age_60plus" = "durchschnittlicher täglicher Bewegungsradius der über 60-Järigen",
+                                     "daily_radius_mean_age_65plus" = "durchschnittlicher täglicher Bewegungsradius der über 65-Jähriegen",
+                                     "daily_radius_mean_age_15_64" = "durchschnittlicher täglicher Bewegungsradius der 15-64-Jährigen", 
+                                     "daily_radius_mean_male" = "durchschnittlicher täglicher Bewegungsradius der Männer", 
+                                     "daily_radius_mean_female" = "durchschnittlicher täglicher Bewegungsradius der Frauen",
+                                     "daily_radius_mean_urban" = "durchschnittlicher täglicher Bewegungsradius im urbanen Raum", 
+                                     "daily_radius_mean_rural" = "durchschnittlicher täglicher Bewegungsradius im ruralen Raum", 
+                              
+                                     "daily_distance_median_total" = "mediane Tagesdistanz", 
+                                     "daily_distance_median_age_15_29" = "mediane Tagesdistanz der 15-29-Jährigen",
+                                     "daily_distance_median_age_30_59" = "mediane Tagesdistanz der 30-59-Jährigen", 
+                                     "daily_distance_median_age_60plus" = "mediane Tagesdistanz der über 60-Järigen", 
+                                     "daily_distance_median_age_65plus" = "mediane Tagesdistanz der über 65-Jähriegen",
+                                     "daily_distance_median_age_15_64" = "mediane Tagesdistanz der 15-64-Jährigen", 
+                                     "daily_distance_median_male" = "mediane Tagesdistanz der Männer", 
+                                     "daily_distance_median_female" = "mediane Tagesdistanz der Frauen",
+                                     "daily_distance_median_urban" = "mediane Tagesdistanz im urbanen Raum", 
+                                     "daily_distance_median_rural" = "mediane Tagesdistanz im ruralen Raum", 
+                              
+                                     "daily_radius_median_total" = "medianer täglicher Bewegungsradius",
+                                     "daily_radius_median_age_15_29" = "medianer täglicher Bewegungsradius der 15-29-Jährigen", 
+                                     "daily_radius_median_age_30_59" = "medianer täglicher Bewegungsradius der 30-59-Jährigen", 
+                                     "daily_radius_median_age_60plus" = "medianer täglicher Bewegungsradius der über 60-Järigen",
+                                     "daily_radius_median_age_65plus" = "medianer täglicher Bewegungsradius der über 65-Jähriegen",
+                                     "daily_radius_median_age_15_64" = "medianer täglicher Bewegungsradius der 15-64-Jährigen", 
+                                     "daily_radius_median_male" = "medianer täglicher Bewegungsradius der Männer", 
+                                     "daily_radius_median_female" = "medianer täglicher Bewegungsradius der Frauen",
+                                     "daily_radius_median_urban" = "medianer täglicher Bewegungsradius im urbanen Raum", 
+                                     "daily_radius_median_rural" = "medianer täglicher Bewegungsradius im ruralen Raum"
+                                     
+                                     ),
+         unit = "km",
+         origin = "Intervista mobility Tracking panel",
+         upadte = "daily",
+         public = "ja",
+         description = "",
+         topic = "moblitaet", 
+         date = as.POSIXct(Datum, format="%d.%m.%Y"),
+         date = as.POSIXct(date, format = "%Y-%m-%d"),
+         date = as.POSIXct(paste(date, "00:00:00", sep=" "))
+         ) %>%
+  select(-Beschreibung, -Typ, -Datum) %>%
+  select(date, value, topic, variable_short, variable_long, location, unit, origin, upadte, public, description)
+  
+
+# check
+# dat_restr %>%
+#   select(variable_short, variable_long) %>%
+#   distinct() %>%
+#   View()
+
+
+```
+
+# write csv
+
+```{r}
+
+write_csv(dat_restr, C:/gitrepos/Intervista_MobilitaetTrackingCorona/Mobility_Inrtvista.csv)
+
+```
+
+

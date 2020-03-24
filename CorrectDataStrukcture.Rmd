@@ -1,5 +1,5 @@
 ---
-title: "IntervistaToCorrectDataStructure.Rmd"
+title: "CorrectDataStructure.Rmd"
 ---
 
 # R setup 
@@ -17,12 +17,26 @@ options(digits = 6)
 
 ```
 
+# download dat
+
+```{r}
+
+dir_name <- "./Download"
+dir.create(dir_name)
+
+# Metadaten
+downloader::download("https://www.intervista.ch/media/2020/03/Download_Mobilit%C3%A4ts-Monitoring_Covid-19.zip",
+                     dest=paste0(dir_name,"/Download.zip"), 
+                     mode="wb")
+unzip(paste0(dir_name,"/Download.zip"), exdir = dir_name)
+
+```
+
 # import data
 
 ```{r}
 
-dat <-  read.csv("C:/gitrepos/Intervista_MobilitaetTrackingCorona/Distanzen.csv", header=T, sep=";", stringsAsFactors=FALSE, encoding="ANSI_X3.4-1986") 
-
+dat <-  read.csv("./Download/Mittelwerte_und_Median_pro_Tag.csv", header=T, sep=",", stringsAsFactors=FALSE, encoding="ANSI_X3.4-1986") 
 
 ```
 
@@ -166,7 +180,7 @@ dat_restr <- dat_CH %>%
 
 ```{r}
 
-write_csv(dat_restr, C:/gitrepos/Intervista_MobilitaetTrackingCorona/Mobility_Intervista.csv)
+write_csv(dat_restr, "./Mobility_Intervista.csv")
 
 ```
 

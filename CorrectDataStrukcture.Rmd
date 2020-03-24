@@ -166,7 +166,7 @@ dat_restr <- dat_CH %>%
 
 ```{r}
 
-write_csv(dat_restr, C:/gitrepos/Intervista_MobilitaetTrackingCorona/Mobility_Inrtvista.csv)
+write_csv(dat_restr, C:/gitrepos/Intervista_MobilitaetTrackingCorona/Mobility_Intervista.csv)
 
 ```
 

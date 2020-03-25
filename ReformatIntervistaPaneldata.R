@@ -15,11 +15,15 @@ downloader::download("https://www.intervista.ch/media/2020/03/Download_Mobilit%C
 unzip(paste0(dir_name,"/Download.zip"), exdir = dir_name)
 # import data
 dat <-  read.csv("./Download/Mittelwerte_und_Median_pro_Tag.csv", header=T, sep=",", stringsAsFactors=FALSE, encoding="ANSI_X3.4-1986") 
-
+#remove umlauts from names
+colnames(dat)<-sub("ä", "ae", colnames(dat), ignore.case = T)
+colnames(dat)<-sub("ü", "ue", colnames(dat), ignore.case = T)
+colnames(dat)<-sub("ö", "oe", colnames(dat), ignore.case = T)
+colnames(dat)<-sub(".", "", colnames(dat), fixed=T)
 # long format with first three vars staying
 dat2<-reshape2::melt(dat, id.vars=1:3)
 #Regional vars subsetted
-datreg<-droplevels(subset(dat2, variable%in%c("Kanton_Zürich_Ja", "Kanton_Zürich_Nein", "Ländlich", "Städtisch", "Total")))
+datreg<-droplevels(subset(dat2, variable%in%c("Kanton_Zuerich_Ja", "Kanton_Zuerich_Nein", "Laendlich", "Staedtisch", "Total")))
 #pasting variable name from tages , Beschreibung (rad/dist) Typ (mean/median)
 
 
@@ -28,7 +32,7 @@ datreg$variable2<-with(datreg, tolower(paste("tages", Beschreibung, Typ, sep="_"
 datreg$location=datreg$variable
 # data values for the whole of switzerland, socially segmented
 
-datch<-droplevels(subset(dat2, variable%in%c("Alter_15.29","Alter_30.64", "Alter_65.79", "Männlich", "Weiblich", "Erwebstätig", "In_Ausbildung", "Nicht_Erwerbstätig")))
+datch<-droplevels(subset(dat2, variable%in%c("Alter_1529","Alter_3064", "Alter_6579", "Männlich", "Weiblich", "Erwebstaetig", "In_Ausbildung", "Nicht_Erwerbstaetig")))
 datch$variable2<-with(datch, tolower(paste("tages", Beschreibung, Typ, variable, sep="_")))
 datch$location<-"CH"
 #recode location
@@ -41,10 +45,10 @@ dattot$location<-"CH"
 datall<-rbind(datreg, datch, dattot)
 datall$unit<-"km"
 
-datall$location<-recode_factor(datall$location, "Kanton_Zürich_Ja" = "ZH",
-                                "Kanton_Zürich_Nein" = "CH ohne ZH",
-                                "Städtisch" = "Städtischer Raum",
-                                "Ländlich"  = "Ländlicher Raum",
+datall$location<-recode_factor(datall$location, "Kanton_Zuerich_Ja" = "ZH",
+                                "Kanton_Zuerich_Nein" = "CH ohne ZH",
+                                "Staedtisch" = "Städtischer Raum",
+                                "Laendlich"  = "Ländlicher Raum",
                                 "CH" = "CH", 
                                 "Total" = "CH")
 
@@ -66,11 +70,11 @@ intervista<-data.frame(date=as.POSIXct(paste(datall$Datum, "00:00:00", sep=" "))
            public="ja",
            description="https://github.com/statistikZH/covid19monitoring_mobility_intervista")
 
-#only median values and without restschweiz
+#only median values and without restschweiz for simplicity 
+#!!! Mistakes in coding vars intervista where means are concerned!!!
 mobility_intervista<-subset(intervista, grepl("median", intervista$variable_short)==T & location!="CH ohne ZH")
 
-
-#get the file out
+#write the final file for publication
 write.table(mobility_intervista, "mobility_intervista.csv", sep=",", fileEncoding="UTF-8", row.names = F)
 
 

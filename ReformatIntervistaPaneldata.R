@@ -32,7 +32,7 @@ datreg$variable2<-with(datreg, tolower(paste("tages", Beschreibung, Typ, sep="_"
 datreg$location=datreg$variable
 # data values for the whole of switzerland, socially segmented
 
-datch<-droplevels(subset(dat2, variable%in%c("Alter_1529","Alter_3064", "Alter_6579", "Männlich", "Weiblich", "Erwebstaetig", "In_Ausbildung", "Nicht_Erwerbstaetig")))
+datch<-droplevels(subset(dat2, variable%in%c("Alter_1529","Alter_3064", "Alter_6579", "Maennlich", "Weiblich", "Erwebstaetig", "In_Ausbildung", "Nicht_Erwerbstaetig")))
 datch$variable2<-with(datch, tolower(paste("tages", Beschreibung, Typ, variable, sep="_")))
 datch$location<-"CH"
 #recode location
@@ -54,7 +54,7 @@ datall$location<-recode_factor(datall$location, "Kanton_Zuerich_Ja" = "ZH",
 
 #Long and german variablenames merge
 codvars<-read.csv("coding_vars_intervista.csv",  fileEncoding = "UTF-8")
-datall<-merge(datall, codvars, by.x="variable2", by.y="var")
+datall<-merge(datall, codvars, by.x="variable2", by.y="var", all.x=T)
 
 #Create the final dataset
 

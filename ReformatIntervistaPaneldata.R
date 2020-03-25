@@ -70,8 +70,8 @@ intervista<-data.frame(date=as.POSIXct(paste(datall$Datum, "00:00:00", sep=" "))
 mobility_intervista<-subset(intervista, grepl("median", intervista$variable_short)==T & location!="CH ohne ZH")
 
 
-
-           )
+#get the file out
+write.table(mobility_intervista, "mobility_intervista.csv", sep=",", fileEncoding="UTF-8", row.names = F)
 
 
 

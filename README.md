@@ -1,1 +1,1 @@
-coding_vars_intervista =Schlüsselfile für de Zuordnung der Variablen
+This script brings a few crucial daily indicators of the intervista-tracking panel into the specified format for the monitoring: Median daily distances and radii of mobility of the population of a few spatial units (CH, ZH and rural/urban areas) and social groups (men/women, employed/non-employed/in education, three age classes). 

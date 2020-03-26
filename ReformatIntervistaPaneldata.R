@@ -15,6 +15,8 @@ downloader::download("https://www.intervista.ch/media/2020/03/Download_Mobilit%C
 unzip(paste0(dir_name,"/Download.zip"), exdir = dir_name)
 # import data
 dat <-  read.csv("./Download/Mittelwerte_und_Median_pro_Tag.csv", header=T, sep=",", stringsAsFactors=FALSE, encoding="ANSI_X3.4-1986") 
+
+
 #remove umlauts from names
 colnames(dat)<-sub("ä", "ae", colnames(dat), ignore.case = T)
 colnames(dat)<-sub("ü", "ue", colnames(dat), ignore.case = T)
@@ -32,7 +34,7 @@ datreg$variable2<-with(datreg, tolower(paste("tages", Beschreibung, Typ, sep="_"
 datreg$location=datreg$variable
 # data values for the whole of switzerland, socially segmented
 
-datch<-droplevels(subset(dat2, variable%in%c("Alter_1529","Alter_3064", "Alter_6579", "Maennlich", "Weiblich", "Erwebstaetig", "In_Ausbildung", "Nicht_Erwerbstaetig")))
+datch<-droplevels(subset(dat2, variable%in%c("Alter_1529","Alter_3064", "Alter_6579", "Maennlich", "Weiblich", "Erwerbstaetig", "In_Ausbildung", "Nicht_Erwerbstaetig")))
 datch$variable2<-with(datch, tolower(paste("tages", Beschreibung, Typ, variable, sep="_")))
 datch$location<-"CH"
 #recode location

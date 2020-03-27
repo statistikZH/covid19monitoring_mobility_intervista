@@ -5,6 +5,18 @@ options(scipen = 1000000)
 options(digits = 6)
 
 
+dir_name <- "./Download"
+#dir.create(dir_name)
+
+# Metadaten
+downloader::download("https://www.intervista.ch/media/2020/03/Download_Mobilit%C3%A4ts-Monitoring_Covid-19.zip",
+                     dest=paste0(dir_name,"/Download.zip"), 
+                     mode="wb")
+unzip(paste0(dir_name,"/Download.zip"), exdir = dir_name)
+# import data
+dat <-  read.csv("./Download/Mittelwerte_und_Median_pro_Tag.csv", header=T, sep=",", stringsAsFactors=FALSE, encoding="ANSI_X3.4-1986") 
+
+
 #remove umlauts from colnames
 colnames(dat)<-sub("ä", "ae", colnames(dat), ignore.case = T)
 colnames(dat)<-sub("ü", "ue", colnames(dat), ignore.case = T)
@@ -36,11 +48,11 @@ datall<-rbind(datreg, datch, dattot)
 datall$unit<-"km"
 
 datall$location<-recode_factor(datall$location, "Kanton_Zuerich_Ja" = "ZH",
-                                "Kanton_Zuerich_Nein" = "CH ohne ZH",
-                                "Staedtisch" = "Städtischer Raum",
-                                "Laendlich"  = "Ländlicher Raum",
-                                "CH" = "CH", 
-                                "Total" = "CH")
+                               "Kanton_Zuerich_Nein" = "CH ohne ZH",
+                               "Staedtisch" = "Städtischer Raum",
+                               "Laendlich"  = "Ländlicher Raum",
+                               "CH" = "CH", 
+                               "Total" = "CH")
 
 #Long and german variablenames merge
 codvars<-read.csv("coding_vars_intervista.csv",  fileEncoding = "UTF-8")
@@ -49,16 +61,16 @@ datall<-merge(datall, codvars, by.x="variable2", by.y="var", all.x=T)
 #Create the final dataset
 
 intervista<-data.frame(date=as.POSIXct(paste(datall$Datum, "00:00:00", sep=" ")),
-           value=datall$value,
-           topic="Mobilität",
-           variable_short=datall$variable2,
-           variable_long=datall$variable_long,
-           location=datall$location,
-           unit="km",
-           source="intervista Tracking-panel",
-           update="täglich",
-           public="ja",
-           description="https://github.com/statistikZH/covid19monitoring_mobility_intervista")
+                       value=datall$value,
+                       topic="Mobilität",
+                       variable_short=datall$variable2,
+                       variable_long=datall$variable_long,
+                       location=datall$location,
+                       unit="km",
+                       source="intervista Tracking-panel",
+                       update="täglich",
+                       public="ja",
+                       description="https://github.com/statistikZH/covid19monitoring_mobility_intervista")
 
 #only median values and without restschweiz for simplicity 
 #!!! Mistakes in coding vars intervista where means are concerned!!!
@@ -66,7 +78,6 @@ mobility_intervista<-subset(intervista, grepl("median", intervista$variable_shor
 
 #write the final file for publication
 write.table(mobility_intervista, "mobility_intervista.csv", sep=",", fileEncoding="UTF-8", row.names = F)
-
 
 
 

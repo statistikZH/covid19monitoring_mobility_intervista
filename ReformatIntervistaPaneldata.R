@@ -5,19 +5,7 @@ options(scipen = 1000000)
 options(digits = 6)
 
 
-dir_name <- "./Download"
-#dir.create(dir_name)
-
-# Metadaten
-downloader::download("https://www.intervista.ch/media/2020/03/Download_Mobilit%C3%A4ts-Monitoring_Covid-19.zip",
-                     dest=paste0(dir_name,"/Download.zip"), 
-                     mode="wb")
-unzip(paste0(dir_name,"/Download.zip"), exdir = dir_name)
-# import data
-dat <-  read.csv("./Download/Mittelwerte_und_Median_pro_Tag.csv", header=T, sep=",", stringsAsFactors=FALSE, encoding="ANSI_X3.4-1986") 
-
-
-#remove umlauts from names
+#remove umlauts from colnames
 colnames(dat)<-sub("ä", "ae", colnames(dat), ignore.case = T)
 colnames(dat)<-sub("ü", "ue", colnames(dat), ignore.case = T)
 colnames(dat)<-sub("ö", "oe", colnames(dat), ignore.case = T)

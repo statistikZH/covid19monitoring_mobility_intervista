@@ -72,12 +72,12 @@ intervista<-data.frame(date=as.POSIXct(paste(datall$Datum, "00:00:00", sep=" "))
                        public="ja",
                        description="https://github.com/statistikZH/covid19monitoring_mobility_intervista")
 
-#only median values and without restschweiz for simplicity 
+#only median values distances and without restschweiz for simplicity 
 #!!! Mistakes in coding vars intervista where means are concerned!!!
-mobility_intervista<-subset(intervista, grepl("median", intervista$variable_short)==T & location!="CH ohne ZH")
+mobility_intervista<-subset(intervista, grepl("median", intervista$variable_short)==T & grepl("distanz", intervista$variable_short)==T & location!="CH ohne ZH")
 
 #write the final file for publication
-write.table(mobility_intervista, "mobility_intervista.csv", sep=",", fileEncoding="UTF-8", row.names = F)
+write.table(mobility_intervista, "Mobility_intervista.csv", sep=",", fileEncoding="UTF-8", row.names = F)
 
 
 

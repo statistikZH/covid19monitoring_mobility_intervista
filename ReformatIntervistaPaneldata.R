@@ -49,8 +49,8 @@ datall$unit<-"km"
 
 datall$location<-recode_factor(datall$location, "Kanton_Zuerich_Ja" = "ZH",
                                "Kanton_Zuerich_Nein" = "CH ohne ZH",
-                               "Staedtisch" = "Städtischer Raum",
-                               "Laendlich"  = "Ländlicher Raum",
+                               "Staedtisch" = "CH: Städtischer Raum",
+                               "Laendlich"  = "CH: Ländlicher Raum",
                                "CH" = "CH", 
                                "Total" = "CH")
 

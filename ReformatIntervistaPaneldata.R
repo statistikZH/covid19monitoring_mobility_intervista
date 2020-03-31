@@ -76,6 +76,8 @@ intervista<-data.frame(date=as.POSIXct(paste(datall$Datum, "00:00:00", sep=" "))
 #!!! Mistakes in coding vars intervista where means are concerned!!!
 mobility_intervista<-subset(intervista, grepl("median", intervista$variable_short)==T & grepl("distanz", intervista$variable_short)==T & location!="CH ohne ZH")
 
+mobility_intervista<-mobility_intervista[order(mobility_intervista$date),]
+
 #write the final file for publication
 write.table(mobility_intervista, "Mobility_intervista.csv", sep=",", fileEncoding="UTF-8", row.names = F)
 

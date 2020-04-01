@@ -81,5 +81,5 @@ mobility_intervista<-mobility_intervista[order(mobility_intervista$date),]
 #write the final file for publication
 write.table(mobility_intervista, "Mobility_intervista.csv", sep=",", fileEncoding="UTF-8", row.names = F)
 
-
+range(mobility_intervista$date)
 

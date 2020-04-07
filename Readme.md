@@ -14,7 +14,11 @@ Das R-Skript in diesem gitrepo extrahiert einige zentrale Kennzahlen (mediane Ta
 **Weitere Informationen**
 
 [Projektseite](https://github.com/statistikZH/covid19monitoring)
+
 [Datenbezug](https://www.web.statistik.zh.ch/covid19_indikatoren_uebersicht/#/)
+
 [Nutzungsbedingungen](https://github.com/openZH/covid_19/blob/master/LICENSE)
+
+
 
 

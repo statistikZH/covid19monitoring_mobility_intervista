@@ -5,9 +5,9 @@ Im Auftrag des Statistischen Amts des Kantons Zürich und des ETH Bereichs COVID
 
 **Methodisches**
 
-[Weitere methodische Angaben finden sich  in der Präsentation, die täglich um 17:00 aktualisiert wird](https://www.intervista.ch/media/2020/03/Report_Mobilit%c3%a4ts-Monitoring_Covid-19.pdf)
+[Weitere methodische Angaben finden sich  in der Präsentation, die täglich um 17:00 aktualisiert wird.](https://www.intervista.ch/media/2020/03/Report_Mobilit%c3%a4ts-Monitoring_Covid-19.pdf)
 
-[Die Originaldaten von intervista AG können hier heruntergeladen werden](https://www.intervista.ch/media/2020/03/Download_Mobilit%C3%A4ts-Monitoring_Covid-19.zip)
+[Die Originaldaten von intervista AG können hier heruntergeladen werden.](https://www.intervista.ch/media/2020/03/Download_Mobilit%C3%A4ts-Monitoring_Covid-19.zip)
 
 Das R-Skript in diesem gitrepo extrahiert einige zentrale Kennzahlen (mediane Tagesdistanz nach soziodemographischen und räumlichen Gruppen) für die Integration in den [harmonisierten Datensatz "Gesellschaftsmonitoring COVID19"](https://raw.githubusercontent.com/statistikZH/covid19monitoring/master/covid19socialmonitoring.csv)
 

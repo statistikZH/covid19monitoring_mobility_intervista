@@ -1,4 +1,4 @@
-covid19monitoring_mobility_intervista
+# covid19monitoring_mobility_intervista
 
 ## Grundlage
 Im Auftrag des Statistischen Amts des Kantons Zürich und des ETH Bereichs COVID-19 Task Force, wertet das Forschungsinstitut  intervista AG seit dem 16.2.2020 das Mobilitätsverhalten der freiwilligen Teilnehmer ihres seit 2018 bestehenden Footprints-Panels aus.  Grundlage sind die Mobilfunkpositionsdaten der Panelteilnehmer, die einmal täglich übermittelt werden.  Bei diesem Monitoring soll das Mobilitätsverhalten der Schweizer Bevölkerung während der Covid-19-Pandemie nachgezeichnet werden. Im Fokus stehen die täglich zurückgelegten Distanzen sowie die täglichen Bewegungsradien. Ausser für die Gesamtbevölkerung der Schweiz, sind die Indikatoren  nach Altersgruppen, Geschlechtern Erwerbsstatus, sowie den städtischen und ländlichen Raum sowie den Kanton Zürich segmentiert. Die Daten werden bis auf weiteres jeden Tag bis und mit den Vortag aktualisiert.

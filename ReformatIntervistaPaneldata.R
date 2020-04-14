@@ -75,7 +75,7 @@ intervista<-data.frame(date=as.POSIXct(paste(datall$Datum, "00:00:00", sep=" "))
 
 #only median values distances and without restschweiz for simplicity 
 #!!! Mistakes in coding vars intervista where means are concerned!!!
-mobility_intervista<-subset(intervista, grepl("median", intervista$variable_short)==T & grepl("distanz", intervista$variable_short)==T & location!="CH ohne ZH")
+mobility_intervista<-droplevels(subset(intervista, grepl("median", intervista$variable_short)==T & grepl("distanz", intervista$variable_short)==T & location!="CH ohne ZH"))
 
 mobility_intervista<-mobility_intervista[order(mobility_intervista$date),]
 

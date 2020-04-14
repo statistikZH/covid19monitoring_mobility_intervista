@@ -17,6 +17,7 @@ unzip(paste0(dir_name,"/Download.zip"), exdir = dir_name)
 dat <-  read.csv("./Download/Mittelwerte_und_Median_pro_Tag.csv", header=T, sep=",", stringsAsFactors=FALSE, encoding="ANSI_X3.4-1986") 
 
 
+
 #remove umlauts from colnames
 colnames(dat)<-sub("ä", "ae", colnames(dat), ignore.case = T)
 colnames(dat)<-sub("ü", "ue", colnames(dat), ignore.case = T)

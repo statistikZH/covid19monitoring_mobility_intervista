@@ -26,15 +26,12 @@ colnames(dat)<-sub(".", "", colnames(dat), fixed=T)
 # long format with first three vars staying
 dat2<-reshape2::melt(dat, id.vars=1:3)
 #Regional vars subsetted
-datreg<-droplevels(subset(dat2, variable%in%c("Kanton_Zuerich_Ja", "Kanton_Zuerich_Nein", "Laendlich", "Staedtisch", "Total")))
+datreg<-droplevels(subset(dat2, variable%in%c("Kanton_Zuerich_Ja", "Kanton_Zuerich_Nein", "Laendlich", "Staedtisch")))
 #pasting variable name from tages , Beschreibung (rad/dist) Typ (mean/median)
-
-
 datreg$variable2<-with(datreg, tolower(paste("tages", Beschreibung, Typ, sep="_")))
 #spatial reference in location
 datreg$location=datreg$variable
 # data values for the whole of switzerland, socially segmented
-
 datch<-droplevels(subset(dat2, variable%in%c("Alter_1529","Alter_3064", "Alter_6579", "Maennlich", "Weiblich", "Erwerbstaetig", "In_Ausbildung", "Nicht_Erwerbstaetig")))
 datch$variable2<-with(datch, tolower(paste("tages", Beschreibung, Typ, variable, sep="_")))
 datch$location<-"CH"

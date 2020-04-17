@@ -1,55 +1,55 @@
 variable,variable_long
-tages_distanz_weniger2km,Tagesdistanz  <  2km
-tages_distanz_2-10km,Tagesdistanz  2-10km
-tages_distanz_10-20km,Tagesdistanz  10-20km
-tages_distanz_20-50km,Tagesdistanz  20-50km
-tages_distanz_50-100km,Tagesdistanz  50-100km
-tages_distanz_100pluskm,Tagesdistanz  > 100km
-tages_distanz_weniger2km_alter_1529,Tagesdistanz  <  2km: 15-29-Jährige
-tages_distanz_2-10km_alter_1529,Tagesdistanz  2-10km: 15-29-Jährige
-tages_distanz_10-20km_alter_1529,Tagesdistanz  10-20km: 15-29-Jährige
-tages_distanz_20-50km_alter_1529,Tagesdistanz  20-50km: 15-29-Jährige
-tages_distanz_50-100km_alter_1529,Tagesdistanz  50-100km: 15-29-Jährige
-tages_distanz_100pluskm_alter_1529,Tagesdistanz  > 100km: 15-29-Jährige
-tages_distanz_weniger2km_alter_3064,Tagesdistanz  <  2km: 30-64-Jährige
-tages_distanz_2-10km_alter_3064,Tagesdistanz  2-10km: 30-64-Jährige
-tages_distanz_10-20km_alter_3064,Tagesdistanz  10-20km: 30-64-Jährige
-tages_distanz_20-50km_alter_3064,Tagesdistanz  20-50km: 30-64-Jährige
-tages_distanz_50-100km_alter_3064,Tagesdistanz  50-100km: 30-64-Jährige
-tages_distanz_100pluskm_alter_3064,Tagesdistanz  > 100km: 30-64-Jährige
-tages_distanz_weniger2km_alter_6579,Tagesdistanz  <  2km: über 65-Jährige
-tages_distanz_2-10km_alter_6579,Tagesdistanz  2-10km: über 65-Jährige
-tages_distanz_10-20km_alter_6579,Tagesdistanz  10-20km: über 65-Jährige
-tages_distanz_20-50km_alter_6579,Tagesdistanz  20-50km: über 65-Jährige
-tages_distanz_50-100km_alter_6579,Tagesdistanz  50-100km: über 65-Jährige
-tages_distanz_100pluskm_alter_6579,Tagesdistanz  > 100km: über 65-Jährige
-tages_distanz_weniger2km_maennlich,Tagesdistanz  <  2km: der Männer
-tages_distanz_2-10km_maennlich,Tagesdistanz  2-10km: Männer
-tages_distanz_10-20km_maennlich,Tagesdistanz  10-20km: Männer
-tages_distanz_20-50km_maennlich,Tagesdistanz  20-50km: Männer
-tages_distanz_50-100km_maennlich,Tagesdistanz  50-100km: Männer
-tages_distanz_100pluskm_maennlich,Tagesdistanz  > 100km: Männer
-tages_distanz_weniger2km_weiblich,Tagesdistanz  <  2km: Frauen
-tages_distanz_2-10km_weiblich,Tagesdistanz  2-10km: Frauen
-tages_distanz_10-20km_weiblich,Tagesdistanz  10-20km: Frauen
-tages_distanz_20-50km_weiblich,Tagesdistanz  20-50km: Frauen
-tages_distanz_50-100km_weiblich,Tagesdistanz  50-100km: Frauen
-tages_distanz_100pluskm_weiblich,Tagesdistanz  > 100km: Frauen
-tages_distanz_weniger2km_erwerbstaetig,Tagesdistanz  <  2km:  erwerbstätige
-tages_distanz_2-10km_erwerbstaetig,Tagesdistanz  2-10km:  erwerbstätige
-tages_distanz_10-20km_erwerbstaetig,Tagesdistanz  10-20km:  erwerbstätige
-tages_distanz_20-50km_erwerbstaetig,Tagesdistanz  20-50km:  erwerbstätige
-tages_distanz_50-100km_erwerbstaetig,Tagesdistanz  50-100km:  erwerbstätige
-tages_distanz_100pluskm_erwerbstaetig,Tagesdistanz  > 100km:  erwerbstätige
-tages_distanz_weniger2km_in_ausbildung,Tagesdistanz  <  2km: in Ausbildung
-tages_distanz_2-10km_in_ausbildung,Tagesdistanz  2-10km: in Ausbildung
-tages_distanz_10-20km_in_ausbildung,Tagesdistanz  10-20km: in Ausbildung
-tages_distanz_20-50km_in_ausbildung,Tagesdistanz  20-50km: in Ausbildung
-tages_distanz_50-100km_in_ausbildung,Tagesdistanz  50-100km: in Ausbildung
-tages_distanz_100pluskm_in_ausbildung,Tagesdistanz  > 100km: in Ausbildung
-tages_distanz_weniger2km_nicht_erwerbstaetig,Tagesdistanz  <  2km: nicht erwerbstätig
-tages_distanz_2-10km_nicht_erwerbstaetig,Tagesdistanz  2-10km: nicht erwerbstätig
-tages_distanz_10-20km_nicht_erwerbstaetig,Tagesdistanz  10-20km: nicht erwerbstätig
-tages_distanz_20-50km_nicht_erwerbstaetig,Tagesdistanz  20-50km: nicht erwerbstätig
-tages_distanz_50-100km_nicht_erwerbstaetig,Tagesdistanz  50-100km: nicht erwerbstätig
-tages_distanz_100pluskm_nicht_erwerbstaetig,Tagesdistanz  > 100km: nicht erwerbstätig
+tages_distanz_weniger2km,Tagesdistanz < 2km
+tages_distanz_2-10km,Tagesdistanz 2-10km
+tages_distanz_10-20km,Tagesdistanz 10-20km
+tages_distanz_20-50km,Tagesdistanz 20-50km
+tages_distanz_50-100km,Tagesdistanz 50-100km
+tages_distanz_100pluskm,Tagesdistanz > 100km
+tages_distanz_weniger2km_alter_1529,Tagesdistanz < 2km: 15-29-Jährige
+tages_distanz_2-10km_alter_1529,Tagesdistanz 2-10km: 15-29-Jährige
+tages_distanz_10-20km_alter_1529,Tagesdistanz 10-20km: 15-29-Jährige
+tages_distanz_20-50km_alter_1529,Tagesdistanz 20-50km: 15-29-Jährige
+tages_distanz_50-100km_alter_1529,Tagesdistanz 50-100km: 15-29-Jährige
+tages_distanz_100pluskm_alter_1529,Tagesdistanz > 100km: 15-29-Jährige
+tages_distanz_weniger2km_alter_3064,Tagesdistanz < 2km: 30-64-Jährige
+tages_distanz_2-10km_alter_3064,Tagesdistanz 2-10km: 30-64-Jährige
+tages_distanz_10-20km_alter_3064,Tagesdistanz 10-20km: 30-64-Jährige
+tages_distanz_20-50km_alter_3064,Tagesdistanz 20-50km: 30-64-Jährige
+tages_distanz_50-100km_alter_3064,Tagesdistanz 50-100km: 30-64-Jährige
+tages_distanz_100pluskm_alter_3064,Tagesdistanz > 100km: 30-64-Jährige
+tages_distanz_weniger2km_alter_6579,Tagesdistanz < 2km: über 65-Jährige
+tages_distanz_2-10km_alter_6579,Tagesdistanz 2-10km: über 65-Jährige
+tages_distanz_10-20km_alter_6579,Tagesdistanz 10-20km: über 65-Jährige
+tages_distanz_20-50km_alter_6579,Tagesdistanz 20-50km: über 65-Jährige
+tages_distanz_50-100km_alter_6579,Tagesdistanz 50-100km: über 65-Jährige
+tages_distanz_100pluskm_alter_6579,Tagesdistanz > 100km: über 65-Jährige
+tages_distanz_weniger2km_maennlich,Tagesdistanz < 2km: der Männer
+tages_distanz_2-10km_maennlich,Tagesdistanz 2-10km: Männer
+tages_distanz_10-20km_maennlich,Tagesdistanz 10-20km: Männer
+tages_distanz_20-50km_maennlich,Tagesdistanz 20-50km: Männer
+tages_distanz_50-100km_maennlich,Tagesdistanz 50-100km: Männer
+tages_distanz_100pluskm_maennlich,Tagesdistanz > 100km: Männer
+tages_distanz_weniger2km_weiblich,Tagesdistanz < 2km: Frauen
+tages_distanz_2-10km_weiblich,Tagesdistanz 2-10km: Frauen
+tages_distanz_10-20km_weiblich,Tagesdistanz 10-20km: Frauen
+tages_distanz_20-50km_weiblich,Tagesdistanz 20-50km: Frauen
+tages_distanz_50-100km_weiblich,Tagesdistanz 50-100km: Frauen
+tages_distanz_100pluskm_weiblich,Tagesdistanz > 100km: Frauen
+tages_distanz_weniger2km_erwerbstaetig,Tagesdistanz < 2km: erwerbstätige
+tages_distanz_2-10km_erwerbstaetig,Tagesdistanz 2-10km: erwerbstätige
+tages_distanz_10-20km_erwerbstaetig,Tagesdistanz 10-20km: erwerbstätige
+tages_distanz_20-50km_erwerbstaetig,Tagesdistanz 20-50km: erwerbstätige
+tages_distanz_50-100km_erwerbstaetig,Tagesdistanz 50-100km: erwerbstätige
+tages_distanz_100pluskm_erwerbstaetig,Tagesdistanz > 100km: erwerbstätige
+tages_distanz_weniger2km_in_ausbildung,Tagesdistanz < 2km: in Ausbildung
+tages_distanz_2-10km_in_ausbildung,Tagesdistanz 2-10km: in Ausbildung
+tages_distanz_10-20km_in_ausbildung,Tagesdistanz 10-20km: in Ausbildung
+tages_distanz_20-50km_in_ausbildung,Tagesdistanz 20-50km: in Ausbildung
+tages_distanz_50-100km_in_ausbildung,Tagesdistanz 50-100km: in Ausbildung
+tages_distanz_100pluskm_in_ausbildung,Tagesdistanz > 100km: in Ausbildung
+tages_distanz_weniger2km_nicht_erwerbstaetig,Tagesdistanz < 2km: nicht erwerbstätig
+tages_distanz_2-10km_nicht_erwerbstaetig,Tagesdistanz 2-10km: nicht erwerbstätig
+tages_distanz_10-20km_nicht_erwerbstaetig,Tagesdistanz 10-20km: nicht erwerbstätig
+tages_distanz_20-50km_nicht_erwerbstaetig,Tagesdistanz 20-50km: nicht erwerbstätig
+tages_distanz_50-100km_nicht_erwerbstaetig,Tagesdistanz 50-100km: nicht erwerbstätig
+tages_distanz_100pluskm_nicht_erwerbstaetig,Tagesdistanz > 100km: nicht erwerbstätig

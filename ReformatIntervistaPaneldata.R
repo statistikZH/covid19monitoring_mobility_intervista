@@ -55,7 +55,7 @@ datall<-merge(datall, codvars, by.x="variable2", by.y="var", all.x=T)
 
 #Create the final dataset
 
-intervista<-data.frame(date=as.POSIXct(paste(datall$Datum, "00:00:00", sep=" ")),
+intervista<-data.frame(date=as.Date(datall$Datum),
                        value=datall$value,
                        topic="Mobilität",
                        variable_short=datall$variable2,

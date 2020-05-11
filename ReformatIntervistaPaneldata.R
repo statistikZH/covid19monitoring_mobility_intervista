@@ -14,7 +14,7 @@ downloader::download("https://www.intervista.ch/media/2020/03/Download_Mobilit%C
 unzip(paste0(dir_name,"/Download.zip"), exdir = dir_name)
 # import data
 dat <-  read.csv("./Download/Mittelwerte_und_Median_pro_Tag.csv", header=T, sep=",", stringsAsFactors=FALSE, encoding="ANSI_X3.4-1986") 
-
+dat<-dat[,1:16]
 #remove umlauts from colnames
 colnames(dat)<-sub("ä", "ae", colnames(dat), ignore.case = T)
 colnames(dat)<-sub("ü", "ue", colnames(dat), ignore.case = T)

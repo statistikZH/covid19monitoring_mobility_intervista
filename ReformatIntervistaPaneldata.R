@@ -1,5 +1,5 @@
 # import libraries
-library(tidyverse)
+#library(tidyverse)
 library(reshape2)
 options(scipen = 1000000)
 options(digits = 6)
@@ -42,12 +42,17 @@ dattot$location<-"CH"
 datall<-rbind(datreg, datch, dattot)
 datall$unit<-"km"
 
-datall$location<-recode_factor(datall$location, "Kanton_Zuerich_Ja" = "ZH",
-                               "Kanton_Zuerich_Nein" = "CH ohne ZH",
-                               "Staedtisch" = "CH: Städtischer Raum",
-                               "Laendlich"  = "CH: Ländlicher Raum",
-                               "CH" = "CH", 
-                               "Total" = "CH")
+#location
+#c("Kanton_Zuerich_Ja", "Kanton_Zuerich_Nein", "Staedtisch", "Laendlich", "CH")
+
+levels(datall$location)<-c("ZH", "CH ohne ZH", "CH: Städtischer Raum", "CH: Ländlicher Raum", "CH")
+
+#datall$location<-recode_factor(datall$location, "Kanton_Zuerich_Ja" = "ZH",
+#                               "Kanton_Zuerich_Nein" = "CH ohne ZH",
+#                               "Staedtisch" = "CH: Städtischer Raum",
+#                               "Laendlich"  = "CH: Ländlicher Raum",
+#                               "CH" = "CH", 
+#                               "Total" = "CH")
 
 #Long and german variablenames merge
 codvars<-read.csv("coding_vars_intervista.csv",  fileEncoding = "UTF-8")
@@ -67,11 +72,14 @@ intervista<-data.frame(date=as.Date(datall$Datum),
                        public="ja",
                        description="https://github.com/statistikZH/covid19monitoring_mobility_intervista")
 
-#only median values distances and without restschweiz for simplicity 
-#!!! Mistakes in coding vars intervista where means are concerned!!!
-#mobility_intervista<-droplevels(subset(intervista, grepl("median", intervista$variable_short)==T & grepl("distanz", intervista$variable_short)==T))
+#Only distances not radii
+mobility_intervista<-droplevels(subset(intervista, grepl("distanz", intervista$variable_short)==T))
 mobility_intervista<-droplevels(subset(mobility_intervista, location!="CH ohne ZH"))
 mobility_intervista<-mobility_intervista[order(mobility_intervista$date),]
+
+
+
+
 
 # Distanzkategorien----
 dat <-  read.csv("./Download/Distanzkategorien_in_Prozent_pro_Tag.csv", header=T, sep=",", stringsAsFactors=FALSE, encoding="ANSI_X3.4-1986") 
@@ -108,12 +116,21 @@ dattot$location<-"CH"
 datall<-rbind(datreg, datch, dattot)
 datall$unit<-"Anteil in %"
 
-datall$location<-recode_factor(datall$location, "Kanton_Zuerich_Ja" = "ZH",
-                               "Kanton_Zuerich_Nein" = "CH ohne ZH",
-                               "Staedtisch" = "CH: Städtischer Raum",
-                               "Laendlich"  = "CH: Ländlicher Raum",
-                               "CH" = "CH", 
-                               "Total" = "CH")
+#location
+#c("Kanton_Zuerich_Ja", "Kanton_Zuerich_Nein", "Staedtisch", "Laendlich", "CH")
+
+
+levels(datall$location)<-c("ZH", "CH ohne ZH", "CH: Städtischer Raum", "CH: Ländlicher Raum", "CH")
+
+
+#datall$location<-recode_factor(datall$location, "Kanton_Zuerich_Ja" = "ZH",
+#                               "Kanton_Zuerich_Nein" = "CH ohne ZH",
+#                               "Staedtisch" = "CH: Städtischer Raum",
+#                               "Laendlich"  = "CH: Ländlicher Raum",
+#                               "CH" = "CH", 
+#                               "Total" = "CH")
+
+
 
 #Long and german variablenames merge
 codvars<-read.csv("distkat_intervista.csv",  fileEncoding = "UTF-8")

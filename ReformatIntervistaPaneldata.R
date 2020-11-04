@@ -67,6 +67,7 @@ intervista<-data.frame(date=as.Date(datall$Datum),
 
 #Only distances not radii
 mobility_intervista<-droplevels(subset(intervista, grepl("distanz", intervista$variable_short)==T))
+#CH ohne ZH remove
 mobility_intervista<-droplevels(subset(mobility_intervista, location!="CH ohne ZH"))
 mobility_intervista<-mobility_intervista[order(mobility_intervista$date),]
 
@@ -106,21 +107,7 @@ dattot$location<-"CH"
 datall<-rbind(datreg, datch, dattot)
 datall$unit<-"Anteil in %"
 
-#location
-#c("Kanton_Zuerich_Ja", "Kanton_Zuerich_Nein", "Staedtisch", "Laendlich", "CH")
-
-
 levels(datall$location)<-c("ZH", "CH ohne ZH", "CH: Städtischer Raum", "CH: Ländlicher Raum", "CH")
-
-
-#datall$location<-recode_factor(datall$location, "Kanton_Zuerich_Ja" = "ZH",
-#                               "Kanton_Zuerich_Nein" = "CH ohne ZH",
-#                               "Staedtisch" = "CH: Städtischer Raum",
-#                               "Laendlich"  = "CH: Ländlicher Raum",
-#                               "CH" = "CH", 
-#                               "Total" = "CH")
-
-
 
 #Long and german variablenames merge
 codvars<-read.csv("distkat_intervista.csv",  fileEncoding = "UTF-8")
@@ -140,9 +127,9 @@ intervista_distkat<-data.frame(date=as.Date(datall$Datum),
                        public="ja",
                        description="https://github.com/statistikZH/covid19monitoring_mobility_intervista")
 
-
-
-
+intervista_distkat<-droplevels(subset(intervista_distkat, grepl("alter", intervista_distkat$variable_short)==T | nchar(as.character(intervista_distkat$variable_short))<25))
+intervista_distkat<-droplevels(subset(intervista_distkat, location=="CH"))
+intervista_distkat<-intervista_distkat[order(intervista_distkat$date),]
 
 ##
 #Modal und zwecksplit
@@ -176,9 +163,6 @@ intervista_zwmod<-data.frame(date=as.Date(zwmod$date),
                                description="https://github.com/statistikZH/covid19monitoring_mobility_intervista")
 
 #write the final file for publication
-intervista_distkat<-droplevels(subset(intervista_distkat, grepl("alter", intervista_distkat$variable_short)==T | nchar(as.character(intervista_distkat$variable_short))<25))
-intervista_distkat<-droplevels(subset(intervista_distkat, location=="CH"))
-intervista_distkat<-intervista_distkat[order(intervista_distkat$date),]
 
 mobility_intervista<-rbind(mobility_intervista, intervista_distkat, intervista_zwmod)
 

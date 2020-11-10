@@ -45,7 +45,7 @@ dattot$location<-"CH"
 datall<-rbind(datreg, datch, dattot)
 datall$unit<-"km"
 
-levels(datall$location)<-c("ZH", "CH ohne ZH", "CH: Städtischer Raum", "CH: Ländlicher Raum", "Deutschschweiz", "Romandie", "italienische Schweiz", "CH")
+levels(datall$location)<-c("ZH", "CH ohne ZH", "CH-Urban", "CH-Land", "Deutschschweiz", "Romandie", "italienische Schweiz", "CH")
 
 #Long and german variablenames merge
 codvars<-read.csv("coding_vars_intervista.csv",  fileEncoding = "UTF-8")
@@ -107,7 +107,7 @@ dattot$location<-"CH"
 datall<-rbind(datreg, datch, dattot)
 datall$unit<-"Anteil in %"
 
-levels(datall$location)<-c("ZH", "CH ohne ZH", "CH: Städtischer Raum", "CH: Ländlicher Raum", "CH")
+levels(datall$location)<-c("ZH", "CH ohne ZH", "CH-Urban", "CH-Land", "CH")
 
 #Long and german variablenames merge
 codvars<-read.csv("distkat_intervista.csv",  fileEncoding = "UTF-8")

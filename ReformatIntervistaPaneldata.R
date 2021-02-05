@@ -135,7 +135,7 @@ intervista_distkat<-intervista_distkat[order(intervista_distkat$date),]
 #Modal und zwecksplit
 
 # import data
-zweck <-  read.csv("./Download/Mobilit„tszweck_pro_Tag.csv", header=T, sep=",", stringsAsFactors=FALSE, encoding="ANSI_X3.4-1986") 
+zweck <-  read.csv("./Download/Mobilitaetszweck_pro_Tag.csv", header=T, sep=",", stringsAsFactors=FALSE, encoding="ANSI_X3.4-1986") 
 names(zweck)<-c("date", "total", "tages_distanz_mittelwert_zweck_pendeln", "tages_distanz_mittelwert_zweck_freizeit", "tages_distanz_mittelwert_zweck_einkauf", "tages_distanz_mittelwert_zweck_andere")
 zweck<-melt(zweck, id.vars="date")
 
